@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "4b8a0e9a-5510-4e68-8fda-4f48de263261",
+		"name": "Golang",
+		"description": "Golang CRUD Employee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				},
+				"description": "Get all data employee"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/employee/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/employee/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"1"
+					]
+				},
+				"description": "Get satu data by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/employee?id=1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nomor_karyawan",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nama_karyawan",
+							"value": "Muchamad Ardiansyah",
+							"type": "text"
+						},
+						{
+							"key": "departemen",
+							"value": "IT",
+							"type": "text"
+						},
+						{
+							"key": "jabatan",
+							"value": "Software Engineer",
+							"type": "text"
+						},
+						{
+							"key": "alamat",
+							"value": "Bogor",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/employee?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Edit data employee"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/employee/4",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/employee/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"4"
+					]
+				},
+				"description": "Delete data employee"
+			},
+			"response": []
+		}
+	]
+}
