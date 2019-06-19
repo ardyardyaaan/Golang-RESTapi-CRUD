@@ -77,8 +77,8 @@ func (idb *InDB) CreateEmployee(c *gin.Context) {
 
 //edit satu data Employee menggunakan ID(PUT)
 func (idb *InDB) UpdateEmployee(c *gin.Context) {
-	// id := c.Param("id")
-	id := c.Query("id")
+	id := c.Param("id")
+	// id := c.Query("id")
 	nomor_karyawan := c.PostForm("nomor_karyawan")
 	nama_karyawan := c.PostForm("nama_karyawan")
 	departemen := c.PostForm("departemen")
@@ -90,27 +90,29 @@ func (idb *InDB) UpdateEmployee(c *gin.Context) {
 		result      gin.H
 	)
 
-	err := idb.DB.First(&employee, id).Error
+	err := idb.DB.Where("id = ?", id).First(&employee).Error
 	if err != nil {
 		result = gin.H{
 			"result": "data not found",
 		}
-	}
-	newEmployee.Nomor_Karyawan = nomor_karyawan
-	newEmployee.Nama_Karyawan = nama_karyawan
-	newEmployee.Departemen = departemen
-	newEmployee.Jabatan = jabatan
-	newEmployee.Alamat = alamat
-	err = idb.DB.Model(&employee).Updates(newEmployee).Error
-	if err != nil {
-		result = gin.H{
-			"result": "update failed",
-		}
 	} else {
-		result = gin.H{
-			"result": "successfully updated data",
+		newEmployee.Nomor_Karyawan = nomor_karyawan
+		newEmployee.Nama_Karyawan = nama_karyawan
+		newEmployee.Departemen = departemen
+		newEmployee.Jabatan = jabatan
+		newEmployee.Alamat = alamat
+		err = idb.DB.Model(&employee).Updates(newEmployee).Error
+		if err != nil {
+			result = gin.H{
+				"result": "update failed",
+			}
+		} else {
+			result = gin.H{
+				"result": "successfully updated data",
+			}
 		}
 	}
+
 	c.JSON(http.StatusOK, result)
 }
 
@@ -121,22 +123,22 @@ func (idb *InDB) DeleteEmployee(c *gin.Context) {
 		result   gin.H
 	)
 	id := c.Param("id")
-	err := idb.DB.First(&employee, id).Error
+	err := idb.DB.Where("id = ?", id).First(&employee).Error
 	if err != nil {
 		result = gin.H{
 			"result": "data not found",
 		}
-	}
-	err = idb.DB.Delete(&employee).Error
-	if err != nil {
-		result = gin.H{
-			"result": "delete failed",
-		}
 	} else {
-		result = gin.H{
-			"result": "Data deleted successfully",
+		err = idb.DB.Delete(&employee).Error
+		if err != nil {
+			result = gin.H{
+				"result": "delete failed",
+			}
+		} else {
+			result = gin.H{
+				"result": "Data deleted successfully",
+			}
 		}
 	}
-
 	c.JSON(http.StatusOK, result)
 }

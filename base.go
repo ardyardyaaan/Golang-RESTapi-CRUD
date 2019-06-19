@@ -16,7 +16,7 @@ func main() {
 	router.GET("/employee/:id", inDB.GetEmployee)
 	router.GET("/employees", inDB.GetEmployees)
 	router.POST("/employee", inDB.CreateEmployee)
-	router.PUT("/employee", inDB.UpdateEmployee)
+	router.PUT("/employee/:id", inDB.UpdateEmployee)
 	router.DELETE("/employee/:id", inDB.DeleteEmployee)
 	router.Run(":8080")
 }
