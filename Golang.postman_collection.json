@@ -158,6 +158,56 @@
 				"description": "Delete data employee"
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nomor_karyawan",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "nama_karyawan",
+							"value": "Baru",
+							"type": "text"
+						},
+						{
+							"key": "departemen",
+							"value": "baru",
+							"type": "text"
+						},
+						{
+							"key": "jabatan",
+							"value": "baru",
+							"type": "text"
+						},
+						{
+							"key": "alamat",
+							"value": "baru",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee"
+					]
+				},
+				"description": "menambah satu data employee ke dalam database"
+			},
+			"response": []
 		}
 	]
 }
